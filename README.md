@@ -1,4 +1,23 @@
 # mysql_python
+## 2023-01-03(화)
+1. 테이블 명 확인
+```
+show tables;
+```
+2. 테이블의 컬럼명 조회
+```
+desc employees;
+```
+3. first_name 이름, gender 성별, hire_date 회사 입사일로 출력
+```
+select first_name as 이름, gender as 성별, hire_date as '회사 입사일' from employees;
+```
+
+4. autocommit 상태 확인 (1이 기본값, autocommit을 하겠다.)
+```
+SELECT @@AUTOCOMMIT;
+```
+
 ## 2023-01-02(월)
 1. mysql 접속
 ```
@@ -29,6 +48,10 @@ INSERT INTO `shopdb`.`membertbl` (`memberid`, `membername`, `memberaddr`) VALUES
 6. 조회 방법
 ```
 select * from product;
+```
+
+```
+SELECT * FROM employees.titles;
 ```
 
 ```
