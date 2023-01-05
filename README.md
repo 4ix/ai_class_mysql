@@ -1,4 +1,65 @@
 # mysql_python
+## 2023-01-05(목)
+1. 조인
+- 사용자 테이블과 구매 테이블의 userID가 같은거 기준으로
+```
+select * from buytbl join usertbl on buytbl.userID = usertbl.userID;
+```
+
+- natural join: 양쪽 테이블의 같은 컬럼명을 inner join의 결과로 검색
+```
+select * from buytbl natural join usertbl;
+select u.name, b.prodName, b.price, b.amount from usertbl u natural join buytbl b;
+select u.name, prodName, sum(amount*1000) from usertbl u natural join buytbl b group by name, prodName;
+```
+
+- 2개 이상의 테이블 조인
+```
+select stdName, clubName, roomNo from stdtbl s join stdclubtbl sc using (stdName) join clubtbl c using(clubName);
+```
+
+- 크로스 조인: 두 개의 테이블을 조인 조건 없이 결합
+```
+select * from stdtbl cross join clubtbl;
+```
+
+- outer join: 조건에 만족되지 않는 행도 출력
+```
+select * from stdtbl s left outer join stdclubtbl sc using (stdName) left outer join clubtbl c using(clubName);
+select * from stdtbl s right outer join stdclubtbl sc using (stdName) right outer join clubtbl c using(clubName);
+```
+
+2. exists 를 활용해서 존재 여부만 판단
+```
+select userid ID, u.name 이름, u.addr 주소 from usertbl u where exists (select 1 from buytbl where userid = u.userID);
+```
+
+3. 데이터베이스 삭제
+```
+drop database if exists shopdb1;
+```
+
+4. 데이터베이스 생성
+```
+create database tabledb;
+```
+
+5. 테이블 생성
+```
+create table usertbl(userID char(8) not null primary key, name varchar(10) not null, birthYear int, addr char(2), mobile1 char(3), mobile2 char(8), height smallint, mDate date);
+create table buytbl(num int not null auto_increment primary key, userID char(8) not null, prodName char(6) not null, groupName char(4) null, price int not null, amount smallint not null, foreign key(userID) references usertbl(userID));
+```
+
+6. 테이블 수정
+- 생성된 테이블에 primary key 추가
+```
+alter table prodtbl add constraint prodtbl_code_id_pk primary key(prodcode, prodid);
+```
+- 테이블명 변경
+```
+rename table prodtbl to newprod;
+```
+
 ## 2023-01-04(수)
 1. 관계 연산자의 사용
 - and (둘다 true인 경우)
@@ -237,12 +298,6 @@ select if (groupname is not null, groupname,'자료없음') from buytbl;
 select ifnull (groupname, '자료없음');
 select ifnull(groupname, '자료없음') groupname, sum(amount) from buytbl group by 1;
 ```
-
-17. 문자열 내장함수
-- ELT
-```
-```
-
 
 ## 2023-01-03(화)
 1. 테이블 명 확인
