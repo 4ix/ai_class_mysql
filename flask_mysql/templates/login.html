@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN</title>
+</head>
+<body>
+<form method="POST" id="authForm">
+    <div>
+        <p>
+        <h1> Hello</h1>
+        </p>
+        <h3> Please Sign-In</h3>
+        <p>
+            <label for="id">아이디&nbsp&nbsp&nbsp</label>
+            <input type="text" id="username" name="username" placeholder="id">
+        </p>
+
+        <p>
+            <label for="pw">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="password">
+        </p>
+    </div>
+    <input type="submit" name="sign_in" value="sign in" style="WIDTH: 183pt"/>
+</form>
+
+<div class="msg">{{ msg }}</div>
+
+</body>
+</html>

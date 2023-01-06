@@ -1,4 +1,7 @@
 # mysql_python
+## 2023-01-06(금)
+1. flask 실습
+
 ## 2023-01-05(목)
 1. 조인
 - 사용자 테이블과 구매 테이블의 userID가 같은거 기준으로
@@ -325,7 +328,7 @@ mysql -u root -p
 ```
 2. 데이터베이스 생성
 ```
-create databse shopdb;
+create database shopdb;
 ```
 3. 데이터베이스 사용
 ```
